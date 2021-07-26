@@ -1,6 +1,6 @@
 /*import React from 'react' -- already built in implicitly */
 import Expenses from "./compnents/Expense/Expenses";
-import NewExpense from "./compnents/Expense/NewExpense";
+import NewExpense from "./compnents/ExpenseForm/NewExpense";
 
 const expenses = [
   {
