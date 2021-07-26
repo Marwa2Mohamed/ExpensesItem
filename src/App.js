@@ -24,12 +24,17 @@ const expenses = [
   },
 ];
 
+const childOutput = (newexpense) => {
+  expenses.push(newexpense);
+  console.log(expenses[expenses.length -1])
+}
+
 //Component
  const App = () => {
   return (
     <div>
       <h2>Let's get started!</h2>
-      <NewExpense></NewExpense>
+      <NewExpense onFinish = {childOutput}></NewExpense>
       <Expenses expenses={expenses} />
     </div>
   );
