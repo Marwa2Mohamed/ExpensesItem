@@ -30,7 +30,7 @@ const ExpensesForm = (props) => {
     { // event is an object
         setUserInput((prevState)=>{
             return{...prevState, // in order not to overwrite and lose they other property
-            enteredAmount: event.target.value}
+            enteredAmount: Number(event.target.value)}
           });
         //   console.log(userInput.enteredAmount);
     };
@@ -39,7 +39,7 @@ const ExpensesForm = (props) => {
     { // event is an object
         setUserInput((prevState)=>{
            return { ...prevState, // in order not to overwrite and lose they other property
-            enteredDate: new Date(event.target.value)}
+            enteredDate: event.target.value}
           });
         //   console.log(userInput.enteredDate);
     };
@@ -51,7 +51,7 @@ const ExpensesForm = (props) => {
         const expenseData = {
             title: userInput.enteredTitle,
             amount: userInput.enteredAmount,
-            date: userInput.enteredDate
+            date: new Date(userInput.enteredDate)
         }
         props.onSaveForm(expenseData);
         /* to send values from children to parent 3rd step, the attribute(onSaveForm) is not a standard*/
