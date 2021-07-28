@@ -18,14 +18,18 @@ function Expenses(props) {
   return (
     <Card className="expenses">
       <ExpensesFilter onChoice={DisplayYear}></ExpensesFilter>
-      {filteredArray.map((expense) => (
-        <ExpenseItem
-          key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-        />
-      ))}
+      {/*Long statments or expressions like for and if not accepted */}
+      {filteredArray.length === 0 && <p> No Expenses Found </p>}
+      {filteredArray.length > 0 &&
+        filteredArray.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))
+      }
       {/*to loop over Jsx element */}
       {/* <ExpenseItem
         title={props.items[0].title}
