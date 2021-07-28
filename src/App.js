@@ -1,43 +1,46 @@
-/*import React from 'react' -- already built in implicitly */
+import React, { useState } from "react"; /*-- already built in implicitly */
 import Expenses from "./compnents/Expense/Expenses";
 import NewExpense from "./compnents/ExpenseForm/NewExpense";
 
-const expenses = [
+let expensesArr = [
   {
-    id: "e1",
-    title: "Toilet Paper",
-    amount: 94.12,
-    date: new Date(2020, 7, 14),
+    id: Math.random().toString(),
+    title: "A table",
+    amount: 123,
+    date: new Date(2019, 5, 2),
   },
-  { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
   {
-    id: "e3",
+    id:  Math.random().toString(),
+    title: "New Tv",
+    amount: 799.99,
+    date: new Date(2021, 5, 2),
+  },
+  {
+    id:  Math.random().toString(),
     title: "Car Insurance",
-    amount: 294.67,
-    date: new Date(2021, 2, 28),
-  },
-  {
-    id: "e4",
-    title: "New Desk (Wooden)",
-    amount: 450,
-    date: new Date(),
+    amount: 300,
+    date: new Date(2021, 8, 14),
   },
 ];
 
-const childOutput = (newexpense) => {
-  expenses.push(newexpense);
-  console.log(expenses[expenses.length -1])
-}
-
 //Component
- const App = () => {
+const App = () => {
+  // eslint-disable-next-line
+  const [expenses, setExpenses] = useState(expensesArr);
+
+  const childOutput = (expense) => {
+  setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    }); // it updates the expensesarray
+    expensesArr =[expense, ...expensesArr]; 
+  };
   return (
     <div>
       <h2>Let's get started!</h2>
-      <NewExpense onFinish = {childOutput}></NewExpense>
-      <Expenses expenses={expenses} />
+      <NewExpense onFinish={childOutput}></NewExpense>
+      <Expenses items={expensesArr} />
     </div>
   );
-}
+};
 
 export default App;

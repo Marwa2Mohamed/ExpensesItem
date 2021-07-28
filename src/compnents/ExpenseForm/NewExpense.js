@@ -3,12 +3,11 @@ import ExpensesForm from "./ExpenseForm";
 
 function NewExpense(props) {
   const OnSaveExpenseForm = (enteredExpenseData) => {
-    const expenseData = { 
-        ...enteredExpenseData, 
-        id: Math.random().toString() 
-    }
+    const expenseData = {
+      id: Math.random().toString(),
+      ...enteredExpenseData
+    };
     props.onFinish(expenseData);
-    
   }; // to send values from children to parent 1st step
   return (
     <div className="new-expense">
