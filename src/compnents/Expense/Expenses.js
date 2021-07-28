@@ -1,36 +1,38 @@
-/*import React from 'react' -- already built in implicitly */
+import React, { useState } from "react"; /*-- already built in implicitly */
 import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import "../CSS/Expenses.css";
 
 function Expenses(props) {
-  const DisplayYear =(year) => {
-    console.log(year);
-  }
+  const [filteredYear, setfilteredYear] = useState("2022");
+
+  const DisplayYear = (year) => {
+    setfilteredYear(year);
+  };
+
+  let filteredArray = props.items.filter(
+    (expense) => expense.date.getFullYear().toString() === filteredYear
+  );
+
   return (
     <Card className="expenses">
-      <ExpensesFilter onChoice = {DisplayYear}></ExpensesFilter>
-      <ExpenseItem
-        title={props.expenses[0].title}
-        amount={props.expenses[0].amount}
-        date={props.expenses[0].date}
+      <ExpensesFilter onChoice={DisplayYear}></ExpensesFilter>
+      {filteredArray.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      ))}
+      {/*to loop over Jsx element */}
+      {/* <ExpenseItem
+        title={props.items[0].title}
+        amount={props.items[0].amount}
+        date={props.items[0].date}
       ></ExpenseItem>
-      <ExpenseItem
-        title={props.expenses[1].title}
-        amount={props.expenses[1].amount}
-        date={props.expenses[1].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={props.expenses[2].title}
-        amount={props.expenses[2].amount}
-        date={props.expenses[2].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={props.expenses[3].title}
-        amount={props.expenses[3].amount}
-        date={props.expenses[3].date}
-      ></ExpenseItem>
+     */}
     </Card>
   );
 }
