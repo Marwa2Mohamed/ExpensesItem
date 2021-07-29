@@ -36,7 +36,6 @@ const App = () => {
   };
   return (
     <div>
-      <h2>Let's get started!</h2>
       <NewExpense onFinish={childOutput}></NewExpense>
       <Expenses items={expensesArr} />
     </div>
