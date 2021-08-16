@@ -1,6 +1,7 @@
 import React, { useState } from "react"; /*-- already built in implicitly */
 import Expenses from "./compnents/Expense/Expenses";
 import NewExpense from "./compnents/ExpenseForm/NewExpense";
+import Chart from "./compnents/Chart/Chart";
 
 let expensesArr = [
   {
@@ -23,17 +24,21 @@ let expensesArr = [
   },
 ];
 
+let ChartBarArr=[];
+
 //Component
 const App = () => {
   // eslint-disable-next-line
   const [expenses, setExpenses] = useState(expensesArr);
-
-  const childOutput = (expense) => {
-  setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses];
-    }); // it updates the expensesarray
-    expensesArr =[expense, ...expensesArr]; 
+  const childOutput = (expense) => 
+  {
+      setExpenses((prevExpenses) => {
+          return [expense, ...prevExpenses];
+        }); // it updates the expensesarray
+        expensesArr =[expense, ...expensesArr]; 
   };
+
+
   return (
     <div>
       <NewExpense onFinish={childOutput}></NewExpense>
