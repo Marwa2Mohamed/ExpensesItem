@@ -1,7 +1,6 @@
 import React, { useState } from "react"; /*-- already built in implicitly */
 import Expenses from "./compnents/Expense/Expenses";
 import NewExpense from "./compnents/ExpenseForm/NewExpense";
-import Chart from "./compnents/Chart/Chart";
 
 let expensesArr = [
   {
@@ -24,7 +23,6 @@ let expensesArr = [
   },
 ];
 
-let ChartBarArr=[];
 
 //Component
 const App = () => {
