@@ -1,6 +1,7 @@
 import React, { useState } from "react"; /*-- already built in implicitly */
 import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 import ExpensesCondition from "./ExpensesCondition";
+import ExpenseChart from "../Chart/ExpensesChart";
 import Card from "../UI/Card";
 import "../CSS/Expenses.css";
 
@@ -18,9 +19,12 @@ function Expenses(props) {
   return (
     <li>
     <Card className="expenses">
+      
       <ExpensesFilter onChoice={DisplayYear}></ExpensesFilter>
-      {/*Long statments or expressions like for and if not accepted */}
+      {/*Long statments or expressions like for and if not accepted inside JSX*/}
+      <ExpenseChart expenses = {filteredArray}></ExpenseChart>
       <ExpensesCondition filtArr = {filteredArray}></ExpensesCondition>
+      
       {/*to loop over Jsx element */}
         {/* <ExpenseItem
             title={props.items[0].title}
